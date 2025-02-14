@@ -32,7 +32,7 @@ class MixerCard extends LitElement {
     const faderTemplates = [];
     for (const fader_index in this.config.faders) {
         let fader_row = this.config.faders[fader_index]
-        let stateObj = this.hass.states[fader_row.entity_id]
+        let stateObj = this.hass.states[fader_row.entity_id || fader_row.entity]
         let unavailable = stateObj.state == "unavailable" ? true : false
         let domain = computeStateDomain(stateObj)
         let max_value = stateObj.attributes['max']
